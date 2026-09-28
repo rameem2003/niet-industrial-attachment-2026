@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+}
+/* 
+
+.box1 {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  margin: 20px;
+  background-color: red;
+}
+.box2 {
+  width: 500px;
+  height: 500px;
+  background-color: blue;
+}
+.block-element {
+  padding: 20px;
+  background-color: green;
+}
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://thumbs.dreamstime.com/b/incredibly-beautiful-sunset-sun-lake-sunrise-landscape-panorama-nature-sky-amazing-colorful-clouds-fantasy-design-115177001.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+/* a {
+  display: block;
+} */
+
+/* .click {
+  display: inline-block;
+  margin: 20px;
+}
+
+.click:hover {
+  display: none;
+} */
+
+.boxs {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  /* height: 100vh; */
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+}
+
+.box-red {
+  background-color: red;
+}
+.box-blue {
+  background-color: blue;
+}
+.box-green {
+  background-color: green;
+}
+
+/* .box::after {
+  content: "";
+  width: 200px;
+  height: 100px;
+  background-color: green;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+} */
+
+.para {
+  text-decoration: underline;
+  text-align: justify;
+  font-size: 40px;
+  font-family: "Anek Bangla", sans-serif;
+  font-weight: 700;
+}
+
+/* 400 - normal
+500 - medium
+600 - semi bold
+700 - bold
+800 - extrabold */

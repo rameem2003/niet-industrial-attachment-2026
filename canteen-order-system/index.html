@@ -3,9 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Canteen Order System</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="./main.js"></script>
+    <!-- ================= MAIN SCREEN ================= -->
+    <div id="main-screen">
+      <header class="topbar">
+        <h1>Canteen Order System</h1>
+      </header>
+
+      <div class="layout">
+        <!-- LEFT: food menu -->
+        <section class="menu">
+          <h2>Menu</h2>
+          <div id="menu-list" class="menu-list"></div>
+        </section>
+
+        <!-- RIGHT: picked items -->
+        <aside class="cart">
+          <h2>Your Order</h2>
+          <div id="cart-list" class="cart-list">
+            <p class="empty">No items added yet.</p>
+          </div>
+
+          <div class="total-row">
+            <span>Total</span>
+            <strong id="total-price">Tk 0</strong>
+          </div>
+
+          <button id="confirm-btn" class="confirm-btn">Confirm Order</button>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ================= TOKEN SCREEN ================= -->
+    <div id="token-screen" class="hidden">
+      <div class="token">
+        <h2>ORDER TOKEN</h2>
+        <p class="token-id">Token: <strong id="token-id"></strong></p>
+        <hr />
+        <p>Name: <strong id="token-name"></strong></p>
+        <p>Phone: <strong id="token-phone"></strong></p>
+        <hr />
+        <div id="token-items"></div>
+        <hr />
+        <p class="token-total">Total: <strong id="token-total"></strong></p>
+        <button id="new-order-btn" class="confirm-btn">New Order</button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
   </body>
 </html>

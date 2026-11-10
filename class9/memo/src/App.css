@@ -1,0 +1,259 @@
+/* Demo styles for the memo.md implementation (replaces the Vite hero template).
+   Reuses the custom properties (colors, fonts) defined in index.css. */
+
+.demo-header {
+  padding: 36px 24px 16px;
+}
+
+.demo-header h1 {
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+
+.demo-header p {
+  max-width: 70ch;
+  margin: 0 0 12px;
+  text-align: left;
+}
+
+.demo-header code {
+  font-size: 14px;
+}
+
+.lead {
+  margin-bottom: 6px !important;
+}
+
+.steps {
+  margin: 0 0 16px !important;
+  padding-left: 22px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.steps li {
+  margin-bottom: 4px;
+}
+
+.hint {
+  font-size: 13px !important;
+}
+
+/* ── toolbar ─────────────────────────────────────────────────────────── */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 9px 14px;
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.btn:hover {
+  box-shadow: var(--shadow);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.toolbar input {
+  flex: 1;
+  min-width: 230px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 15px;
+}
+
+.parent-badge {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--code-bg);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.parent-badge strong {
+  color: var(--accent);
+}
+
+.selected {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text);
+}
+
+/* ── the three panels ────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 8px 24px 24px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.panel__head {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--code-bg);
+  text-align: left;
+}
+
+.panel__head h2 {
+  margin: 0 0 4px;
+  font-size: 19px;
+}
+
+.tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* color-coding matches the outcome: plain=red, defeated=amber, fixed=green */
+.panel--plain .tag {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.12);
+}
+.panel--broken .tag {
+  color: #b45309;
+  background: rgba(180, 83, 9, 0.14);
+}
+.panel--fixed .tag {
+  color: #15803d;
+  background: rgba(21, 128, 61, 0.14);
+}
+
+.panel__note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.panel__note code {
+  font-size: 12px;
+}
+
+.panel__body {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+/* ── the (pretend-heavy) child ───────────────────────────────────────── */
+
+.renders {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.renders strong {
+  font-family: var(--mono);
+  font-size: 19px;
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--accent-bg);
+}
+
+.screen .empty {
+  margin: 4px 0 8px;
+  font-style: italic;
+  color: var(--text);
+}
+
+.task-list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+
+.task-list li {
+  min-width: 0;
+}
+
+.task-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.task-row:hover {
+  background: var(--accent-bg);
+}
+
+.task-row .task-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+
+.demo-footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 24px 40px;
+}
+
+.demo-footer p {
+  max-width: 90ch;
+  margin: 0 0 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.demo-footer code {
+  font-size: 13px;
+}

@@ -1,17 +1,16 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
-import { SlowList, MemoSlowList } from './components/SlowList.jsx'
-import './App.css'
+import { useCallback, useMemo, useRef, useState } from "react";
+import { SlowList, MemoSlowList } from "./components/SlowList.jsx";
+import "./App.css";
 
 const TASKS = [
-  { id: 1, emoji: '🧠', text: 'Understand why this list re-renders' },
-  { id: 2, emoji: '🪞', text: 'React.memo skips same-prop renders' },
-  { id: 3, emoji: '📦', text: 'useMemo keeps a value stable' },
-  { id: 4, emoji: '🔁', text: 'useCallback keeps a function stable' },
-  { id: 5, emoji: '🤝', text: 'All three tools work together' },
-  { id: 6, emoji: '🚫', text: 'Measure first, memoize later' },
-  { id: 7, emoji: '🚀', text: 'Same idea later in the cart page' },
-]
-
+  { id: 1, emoji: "🧠", text: "Understand why this list re-renders" },
+  { id: 2, emoji: "🪞", text: "React.memo skips same-prop renders" },
+  { id: 3, emoji: "📦", text: "useMemo keeps a value stable" },
+  { id: 4, emoji: "🔁", text: "useCallback keeps a function stable" },
+  { id: 5, emoji: "🤝", text: "All three tools work together" },
+  { id: 6, emoji: "🚫", text: "Measure first, memoize later" },
+  { id: 7, emoji: "🚀", text: "Same idea later in the cart page" },
+];
 /**
  * THE DEMO — one parent, three panels, same child everywhere.
  * The big "Renders" number in each panel is the whole story:
@@ -24,9 +23,9 @@ const TASKS = [
  * The DIFFERENCE between panels is the lesson, and it holds in prod too.
  */
 export default function App() {
-  const [count, setCount] = useState(0)
-  const [query, setQuery] = useState('')
-  const [selected, setSelected] = useState('— none yet —')
+  const [count, setCount] = useState(0);
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState("— none yet —");
 
   // Panel 3 prop 1 — useMemo: `filtered` is the SAME array until `query`
   // really changes. An inline TASKS.filter(...) here would rebuild it
@@ -34,14 +33,14 @@ export default function App() {
   const filtered = useMemo(
     () =>
       TASKS.filter((t) =>
-        t.text.toLowerCase().includes(query.trim().toLowerCase())
+        t.text.toLowerCase().includes(query.trim().toLowerCase()),
       ),
-    [query] // TASKS never changes, so it isn't even a dependency
-  )
+    [query], // TASKS never changes, so it isn't even a dependency
+  );
 
   // Panel 3 prop 2 — useCallback: ONE function forever.
   // An inline arrow would be a new function each render and break memo.
-  const handleSelect = useCallback((text) => setSelected(text), [])
+  const handleSelect = useCallback((text) => setSelected(text), []);
 
   return (
     <main>
@@ -54,16 +53,21 @@ export default function App() {
         </p>
         <ol className="steps">
           <li>
-            Click <strong>+1</strong> — panels 1 and 2 re-render. Panel 3 does{' '}
+            Click <strong>+1</strong> — panels 1 and 2 re-render. Panel 3 does{" "}
             <strong>nothing</strong>.
           </li>
           <li>
-            Type <strong>memo</strong> in the box — panel 3 updates exactly once.
+            Type <strong>memo</strong> in the box — panel 3 updates exactly
+            once.
           </li>
         </ol>
 
         <div className="toolbar">
-          <button type="button" className="btn" onClick={() => setCount((c) => c + 1)}>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => setCount((c) => c + 1)}
+          >
             +1
           </button>
           <input
@@ -105,7 +109,7 @@ export default function App() {
             <MemoSlowList
               label="Panel 2"
               list={TASKS.filter((t) =>
-                t.text.toLowerCase().includes(query.trim().toLowerCase())
+                t.text.toLowerCase().includes(query.trim().toLowerCase()),
               )}
               onSelect={(text) => setSelected(text)}
             />
@@ -135,9 +139,9 @@ export default function App() {
           <strong>Why panel 3 skips:</strong> <code>React.memo</code> compares
           props by identity, and panel 3&rsquo;s props never change identity
           between renders — same array (useMemo), same function (useCallback).
-          Panels 1 and 2 rebuild props (or don&rsquo;t wrap), so they
-          re-render. Note the +1 button doesn&rsquo;t even touch the list — the
-          panels 1–2 re-renders you see are the waste memo solves.
+          Panels 1 and 2 rebuild props (or don&rsquo;t wrap), so they re-render.
+          Note the +1 button doesn&rsquo;t even touch the list — the panels 1–2
+          re-renders you see are the waste memo solves.
         </p>
         <p className="hint">
           Console: one line per render. Dev-only: StrictMode double-renders, so
@@ -146,5 +150,5 @@ export default function App() {
         </p>
       </footer>
     </main>
-  )
+  );
 }

@@ -1,0 +1,3 @@
+[languages.prettier]
+prefer = true
+runOnSave = true

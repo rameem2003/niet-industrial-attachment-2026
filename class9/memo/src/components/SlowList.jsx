@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react'
+import { memo, useRef } from "react";
 
 /**
  * The "expensive" child. Same body for all 3 panels of App.jsx,
@@ -11,19 +11,19 @@ import { memo, useRef } from 'react'
  * fake heavy work   the ~25 ms loop — re-renders also FEEL slow
  */
 export function SlowList({ label, list, onSelect }) {
-  const renders = useRef(0)
-  renders.current += 1
-  console.log(`${label} rendered — #${renders.current}`)
+  const renders = useRef(0);
+  renders.current += 1;
+  console.log(`${label} rendered — #${renders.current}`);
 
   // Pretend this component does heavy work on every render.
   // Small enough to stay usable; big enough to feel the jank.
-  let sink = 0
-  const start = performance.now()
+  let sink = 0;
+  const start = performance.now();
   while (performance.now() - start < 25) {
-    sink += Math.random()
+    sink += Math.random();
   }
   if (sink < 0) {
-    console.log(sink) // never true — keeps the accumulator used
+    console.log(sink); // never true — keeps the accumulator used
   }
 
   return (
@@ -37,7 +37,11 @@ export function SlowList({ label, list, onSelect }) {
       <ul className="task-list">
         {list.map((item) => (
           <li key={item.id}>
-            <button type="button" className="task-row" onClick={() => onSelect(item.text)}>
+            <button
+              type="button"
+              className="task-row"
+              onClick={() => onSelect(item.text)}
+            >
               <span aria-hidden="true">{item.emoji}</span>
               <span className="task-text">{item.text}</span>
             </button>
@@ -45,7 +49,7 @@ export function SlowList({ label, list, onSelect }) {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 /**
@@ -53,4 +57,4 @@ export function SlowList({ label, list, onSelect }) {
  * re-renders ONLY when a prop is different (shallow, Object.is).
  * New array / new inline function → "different" → memo can't help.
  */
-export const MemoSlowList = memo(SlowList)
+export const MemoSlowList = memo(SlowList);
